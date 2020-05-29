@@ -1,29 +1,34 @@
-export const parseSecurities = (data) => {
+export const parseSecurities = (data, filterSecId = '') => {
   const domParser = new DOMParser();
   const doc = domParser.parseFromString(data, 'text/xml');
   const [...rows] = doc.querySelectorAll('row');
 
-  const securities = rows.map((item) => {
-    const id = item.attributes.getNamedItem('id').value;
-    const secId = item.attributes.getNamedItem('secid').value;
-    const shortName = item.attributes.getNamedItem('shortname').value;
-    const name = item.attributes.getNamedItem('name').value;
-    const emitentTitle = item.attributes.getNamedItem('emitent_title').value;
-    const regNumber = item.attributes.getNamedItem('regnumber').value;
-    const primaryBoardId = item.attributes.getNamedItem('primary_boardid').value;
-    const isTraded = item.attributes.getNamedItem('is_traded').value;
+  const securities = rows
+    .filter((item) => {
+      const secId = item.attributes.getNamedItem('secid').value;
+      return (filterSecId === '') ? true : (secId === filterSecId);
+    })
+    .map((item) => {
+      const id = item.attributes.getNamedItem('id').value;
+      const secId = item.attributes.getNamedItem('secid').value;
+      const shortName = item.attributes.getNamedItem('shortname').value;
+      const name = item.attributes.getNamedItem('name').value;
+      const emitentTitle = item.attributes.getNamedItem('emitent_title').value;
+      const regNumber = item.attributes.getNamedItem('regnumber').value;
+      const primaryBoardId = item.attributes.getNamedItem('primary_boardid').value;
+      const isTraded = item.attributes.getNamedItem('is_traded').value;
 
-    return {
-      id,
-      secId,
-      shortName,
-      name,
-      emitentTitle,
-      regNumber,
-      primaryBoardId,
-      isTraded,
-    };
-  });
+      return {
+        id,
+        secId,
+        shortName,
+        name,
+        emitentTitle,
+        regNumber,
+        primaryBoardId,
+        isTraded,
+      };
+    });
 
   return securities.reduce((acc, item) => ({ ...acc, [item.secId]: item }), {});
 };

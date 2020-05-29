@@ -5,23 +5,37 @@
     <title></title>
   </head>
   <body>
-    <p>Hello, world!</p>
-    <input type="file" onchange="showFile(this)">
+    <!--<input type="file" onchange="showFile(this)">-->
     <div id="manage_table">
-      <select id="select_sort_field">
-        <option value="secId">secid</option>
-        <option value="regNumber">regnumber</option>
-        <option value="name">name</option>
-        <option value="emitentTitle">emitent_title</option>
-        <option value="tradeDate">tradedate</option>
-        <option value="numTrades">numtrades</option>
-        <option value="open">open</option>
-        <option value="close">close</option>
-      </select>
-      <select id="select_sort_direction">
-        <option value="asc">asc</option>
-        <option value="desc">desc</option>
-      </select>
+      <fieldset>
+        <legend>
+          <small>
+            Дозапрос ценных бумаг (http://iss.moex.com/iss/securities.xml?q=...)
+          </small>
+        </legend>
+        <button id="button_query_sec">Запросить</button>
+        <span id="span_query">...</span>
+      </fieldset>
+      <p>
+        Сортировка:
+        <select id="select_sort_field">
+          <option value="secId">secid</option>
+          <option value="regNumber">regnumber</option>
+          <option value="name">name</option>
+          <option value="emitentTitle">emitent_title</option>
+          <option value="tradeDate">tradedate</option>
+          <option value="numTrades">numtrades</option>
+          <option value="open">open</option>
+          <option value="close">close</option>
+        </select>
+        <select id="select_sort_direction">
+          <option value="asc">asc</option>
+          <option value="desc">desc</option>
+        </select>
+        Фильтрация:
+        <input id="input_emitent" type="text" placeholder="emitent_title">
+        <select id="select_filter_trade_date"></select><br>
+      </p>
     </div>
     <div id="table">
       

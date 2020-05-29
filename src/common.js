@@ -1,4 +1,5 @@
 // import _ from 'lodash';
+import axios from 'axios';
 import { parseSecurities, parseHistory } from './parsers';
 
 export const readFileSecurities = (filePath) => fetch(filePath)
@@ -51,9 +52,19 @@ const compareStrings = (fieldName, sortDirection) => {
   return mapping[sortDirection];
 };
 
-export const preparationData = (securities, history, sort = 'secId', direction = 'asc') => {
+const preparationData = (securities, history, filterEmitent, filterTradeDate, sort = 'secId', direction = 'asc') => {
   const data = history
     .filter((item) => securities[item.secId])
+    .filter((item) => {
+      const { tradeDate } = item;
+
+      return (filterTradeDate === '') ? true : (tradeDate === filterTradeDate);
+    })
+    .filter((item) => {
+      const emitent = securities[item.secId].emitentTitle.toUpperCase();
+
+      return (filterEmitent === '') ? true : (emitent.indexOf(filterEmitent) !== -1);
+    })
     .map((item) => {
       const sec = securities[item.secId];
 
@@ -74,17 +85,11 @@ export const preparationData = (securities, history, sort = 'secId', direction =
   return mapping[sort];
 };
 
-export const buildTable = (securities, history, sortCol, sortDirection) => {
+const buildTable = (data) => {
   const table = document.getElementById('table');
-  const rawData = preparationData(
-    securities,
-    history,
-    sortCol,
-    sortDirection,
-  );
   let strData = '';
 
-  strData = rawData.reduce((acc, item) => (`${acc}<tr>
+  strData = data.reduce((acc, item) => (`${acc}<tr>
     <td>${item.secId}</td>
     <td>${item.regNumber}</td>
     <td>${item.name}</td>
@@ -96,7 +101,7 @@ export const buildTable = (securities, history, sortCol, sortDirection) => {
     </tr>`), '');
 
   table.innerHTML = `<table border=1>
-    <caption>Кол-во: ${rawData.length}</caption>
+    <caption><b>Кол-во: ${data.length}</b></caption>
     <tr>
     <th>secid</th>
     <th>regnumber</th>
@@ -109,4 +114,31 @@ export const buildTable = (securities, history, sortCol, sortDirection) => {
     </tr>
     ${strData}
     </table>`;
+};
+
+export const updateTable = (state) => {
+  const { data, form } = state;
+
+  const tableData = preparationData(
+    data.securities,
+    data.history,
+    form.filterEmitent,
+    form.filterTradeDate,
+    form.sortCol,
+    form.sortDirection,
+  );
+
+  buildTable(tableData);
+};
+
+export const querySecurities = (textQuery) => {
+  const url = 'http://iss.moex.com/iss/securities.xml';
+
+  return axios.get(url, {
+    params: {
+      q: textQuery,
+    },
+  })
+    .then((response) => parseSecurities(response.data, textQuery))
+    .catch(console.log);
 };
