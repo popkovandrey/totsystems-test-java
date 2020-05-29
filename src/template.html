@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>Hello, world!</p>
+    <input type="file" onchange="showFile(this)">
+    <div id="manage_table">
+      <select id="select_sort_field">
+        <option value="secId">secid</option>
+        <option value="regNumber">regnumber</option>
+        <option value="name">name</option>
+        <option value="emitentTitle">emitent_title</option>
+        <option value="tradeDate">tradedate</option>
+        <option value="numTrades">numtrades</option>
+        <option value="open">open</option>
+        <option value="close">close</option>
+      </select>
+      <select id="select_sort_direction">
+        <option value="asc">asc</option>
+        <option value="desc">desc</option>
+      </select>
+    </div>
+    <div id="table">
+      
+    </div>
+  </body>
+</html>

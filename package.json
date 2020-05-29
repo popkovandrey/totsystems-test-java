@@ -1,0 +1,41 @@
+{
+  "name": "totsystems-test-java",
+  "version": "0.0.1",
+  "description": "totsystems test task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popkovandrey/totsystems-test-java.git"
+  },
+  "author": "Popkov Andrey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/popkovandrey/totsystems-test-java/issues"
+  },
+  "homepage": "https://github.com/popkovandrey/totsystems-test-java#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.10.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15",
+    "melanke-watchjs": "^1.5.2"
+  }
+}
