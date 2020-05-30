@@ -5,6 +5,13 @@ import {
   updateTable,
 } from './common';
 import setWatches from './watches';
+import '../xml/history_1.xml';
+import '../xml/history_2.xml';
+import '../xml/history_3.xml';
+import '../xml/history_4.xml';
+import '../xml/securities_1.xml';
+import '../xml/securities_2.xml';
+
 
 const app = () => {
   const state = {

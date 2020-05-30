@@ -13,6 +13,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: '[name].build.js',
   },
 
@@ -20,12 +21,6 @@ module.exports = {
 
   watchOptions: {
     aggregateTimeout: 100,
-  },
-
-  devServer: {
-    // contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 5000
   },
 
   devtool: NODE_ENV === 'development' ? 'source-map' : false,
@@ -44,9 +39,9 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|svg|xml)$/,
+        test: /\.(xml)$/,
         use: {
-          loader: 'file-loader?name=[path][name].[ext]',
+          loader: 'file-loader?name=/xml/[name].[ext]',
         },
       },
     ],
