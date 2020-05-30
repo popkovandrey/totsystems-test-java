@@ -24,7 +24,7 @@ const app = () => {
       sortDirection: 'asc',
       filterEmitent: '',
       filterTradeDate: '',
-      querySecurities: '',
+      processQuery: 'finished',
     },
   };
 
@@ -94,6 +94,8 @@ const app = () => {
       return;
     }
 
+    state.form.processQuery = 'sending';
+
     const arrSecId = filtred.map((item) => item.secId);
 
     const setSecId = new Set(arrSecId);
@@ -103,9 +105,12 @@ const app = () => {
         .then((objSecurities) => {
           spanQuery.innerHTML = `${item}...done`;
           state.data.securities = { ...state.data.securities, ...objSecurities };
-
+        })
+        .finally(() => {
           if (index === (arr.length - 1)) {
             updateTable(state);
+            spanQuery.innerHTML = `запрошено ${arr.length} шт.`;
+            state.form.processQuery = 'finished';
           }
         });
     });

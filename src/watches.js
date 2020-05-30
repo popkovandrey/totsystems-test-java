@@ -5,6 +5,7 @@ import { updateTable } from './common';
 const setWatches = (state) => {
   const { data, form } = state;
   const selectFilterTradeDate = document.getElementById('select_filter_trade_date');
+  const buttonQuerySec = document.getElementById('button_query_sec');
 
   watch(data, 'history', () => {
     const arrTradeDate = data.history.map((item) => item.tradeDate);
@@ -20,8 +21,21 @@ const setWatches = (state) => {
     updateTable(state);
   });
 
-  watch(form, 'querySecurities', () => {
-    // updateTable(state);
+  watch(form, 'processQuery', () => {
+    switch (form.processQuery) {
+      case 'sending':
+        buttonQuerySec.disabled = true;
+        buttonQuerySec.textContent = '...запрос';
+
+        break;
+      case 'finished':
+        buttonQuerySec.disabled = false;
+        buttonQuerySec.textContent = 'Запросить';
+
+        break;
+      default:
+        break;
+    }
   });
 };
 
