@@ -1,4 +1,7 @@
 # totsystems-test-java
+Тестовое задание в компании TOTSystems.
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/f6fb7a41d043c58248cb/maintainability)](https://codeclimate.com/github/popkovandrey/totsystems-test-java/maintainability)
 
 [Preview is here](https://tranquil-refuge-71409.herokuapp.com/)
 
