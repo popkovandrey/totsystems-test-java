@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "make develop"
+    "start": "make develop",
+    "build": "npx webpack -p --env production",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
