@@ -66,7 +66,7 @@ const app = () => {
       state.form.sortCol = 'secId';
     });
 
-  console.log(state);
+  console.log('Стейт приложения:', state);
 
   selectSortField.addEventListener('change', (evt) => {
     state.form.sortCol = evt.target.value;
