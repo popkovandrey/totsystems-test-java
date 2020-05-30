@@ -21,7 +21,7 @@ const setWatches = (state) => {
   });
 
   watch(form, 'querySecurities', () => {
-    updateTable(state);
+    // updateTable(state);
   });
 };
 

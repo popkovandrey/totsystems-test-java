@@ -1,4 +1,9 @@
-import { readFileSecurities, readFileHistory, querySecurities, updateTable } from './common';
+import {
+  readFileSecurities,
+  readFileHistory,
+  querySecurities,
+  updateTable,
+} from './common';
 import setWatches from './watches';
 
 const app = () => {
@@ -22,8 +27,6 @@ const app = () => {
   const selectFilterTradeDate = document.getElementById('select_filter_trade_date');
   const buttonQuerySec = document.getElementById('button_query_sec');
   const spanQuery = document.getElementById('span_query');
-
-  console.log('Hello, world!');
 
   readFileSecurities('/xml/securities_1.xml')
     .then((objSecurities) => {
@@ -100,7 +103,6 @@ const app = () => {
         });
     });
   });
-
 
   setWatches(state);
 };

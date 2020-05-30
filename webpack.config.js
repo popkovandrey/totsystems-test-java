@@ -22,6 +22,12 @@ module.exports = {
     aggregateTimeout: 100,
   },
 
+  devServer: {
+    // contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 5000
+  },
+
   devtool: NODE_ENV === 'development' ? 'source-map' : false,
 
   module: {
