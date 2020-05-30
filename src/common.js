@@ -132,7 +132,7 @@ export const updateTable = (state) => {
 };
 
 export const querySecurities = (textQuery) => {
-  const url = 'http://iss.moex.com/iss/securities.xml';
+  const url = 'https://iss.moex.com/iss/securities.xml';
 
   return axios.get(url, {
     params: {
