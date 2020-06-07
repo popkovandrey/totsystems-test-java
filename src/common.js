@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 import axios from 'axios';
-import { parseSecurities, parseHistory } from './parsers';
+import { parseSecurities, parseHistory } from './server/parsers';
 
 export const readFileSecurities = (filePath) => fetch(filePath)
   .then((response) => response.text())

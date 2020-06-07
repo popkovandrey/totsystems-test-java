@@ -66,14 +66,10 @@ app.put('/api/securities/:secId', (request, reply) => {
 });
 
 app.post('/api/securities/', (request, reply) => {
-  // console.log(request.query);
   const post = postSecurities(securities, request.query);
 
   reply.status(post.status);
   reply.send(post.send);
-
-  // console.log(request.query);
-  // reply.send('post');
 });
 
 app.get('/api/raw/securities', (request, reply) => {
