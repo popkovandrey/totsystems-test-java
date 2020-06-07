@@ -1,3 +1,5 @@
+import xml2js from 'xml2js';
+
 export const parseSecurities = (data, filterSecId = '') => {
   const domParser = new DOMParser();
   const doc = domParser.parseFromString(data, 'text/xml');
@@ -63,6 +65,75 @@ export const parseHistory = (data) => {
       low,
       high,
     };
+  });
+
+  return histories;
+};
+
+export const parseSecurities2 = (data) => {
+  let securities = [];
+
+  xml2js.parseString(data, { mergeAttrs: true }, (err, result) => {
+    const [...rows] = result.document.data[0].rows[0].row;
+
+    securities = rows
+      .map((item) => {
+        const id = item.id[0];
+        const secId = item.secid[0];
+        const shortName = item.shortname[0];
+        const name = item.name[0];
+        const emitentTitle = item.emitent_title[0];
+        const regNumber = item.regnumber[0];
+        const primaryBoardId = item.primary_boardid[0];
+        const isTraded = item.is_traded[0];
+
+        return {
+          id,
+          secId,
+          shortName,
+          name,
+          emitentTitle,
+          regNumber,
+          primaryBoardId,
+          isTraded,
+        };
+      });
+  });
+
+  return securities;
+};
+
+export const parseHistory2 = (data) => {
+  let histories = [];
+
+  xml2js.parseString(data, { mergeAttrs: true }, (err, result) => {
+    const [...rows] = result.document.data[0].rows[0].row;
+
+    histories = rows.map((item) => {
+      const boardId = item.BOARDID[0];
+      const tradeDate = item.TRADEDATE[0];
+      const secId = item.SECID[0];
+      const numTrades = item.NUMTRADES[0];
+      const val = item.VALUE[0];
+      const open = item.OPEN[0];
+      const close = item.CLOSE[0];
+      const volume = item.VOLUME[0];
+      const low = item.LOW[0];
+      const high = item.HIGH[0];
+
+      return {
+        boardId,
+        tradeDate,
+        secId,
+        numTrades,
+        val,
+        open,
+        close,
+        volume,
+        low,
+        high,
+      };
+    });
   });
 
   return histories;

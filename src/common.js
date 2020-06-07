@@ -142,3 +142,11 @@ export const querySecurities = (textQuery) => {
     .then((response) => parseSecurities(response.data, textQuery))
     .catch(console.log);
 };
+
+export const queryRawData = (data) => {
+  const url = `http://localhost:5000/api/raw/${data}`;
+
+  return axios.get(url)
+    .then((response) => response.data)
+    .catch(console.log);
+};
