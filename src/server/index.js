@@ -34,7 +34,7 @@ let history = [];
 const port = process.env.PORT || 5000;
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../../dist')));
 
 app.get('/api', (request, reply) => {
   reply.send('API is running');

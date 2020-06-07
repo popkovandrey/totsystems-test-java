@@ -58,7 +58,7 @@ var securities = [];
 var history = [];
 var port = process.env.PORT || 5000;
 var app = (0, _express["default"])();
-app.use(_express["default"]["static"](_path["default"].resolve(__dirname, '../dist')));
+app.use(_express["default"]["static"](_path["default"].resolve(__dirname, '../../dist')));
 app.get('/api', function (request, reply) {
   reply.send('API is running');
 });
@@ -82,11 +82,9 @@ app.put('/api/securities/:secId', function (request, reply) {
   reply.send(put.send);
 });
 app.post('/api/securities/', function (request, reply) {
-  // console.log(request.query);
   var post = (0, _crud.postSecurities)(securities, request.query);
   reply.status(post.status);
-  reply.send(post.send); // console.log(request.query);
-  // reply.send('post');
+  reply.send(post.send);
 });
 app.get('/api/raw/securities', function (request, reply) {
   reply.send(securities.reduce(function (acc, item) {
