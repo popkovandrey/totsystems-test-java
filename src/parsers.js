@@ -1,4 +1,5 @@
 import xml2js from 'xml2js';
+// const xml2js = require('xml2js');
 
 export const parseSecurities = (data, filterSecId = '') => {
   const domParser = new DOMParser();
@@ -138,3 +139,9 @@ export const parseHistory2 = (data) => {
 
   return histories;
 };
+
+/* module.exports.parseSecurities = parseSecurities;
+module.exports.parseHistory = parseHistory;
+module.exports.parseSecurities2 = parseSecurities2;
+module.exports.parseHistory2 = parseHistory2;
+*/
