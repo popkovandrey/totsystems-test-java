@@ -19,10 +19,8 @@
   },
   "homepage": "https://github.com/popkovandrey/totsystems-test-java#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.0",
     "@babel/core": "^7.10.0",
     "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.10.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.1.0",
@@ -36,6 +34,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.2",
     "express": "^4.17.1",
