@@ -144,7 +144,7 @@ export const querySecurities = (textQuery) => {
 };
 
 export const queryRawData = (data) => {
-  const url = `http://localhost:5000/api/raw/${data}`;
+  const url = `/api/raw/${data}`;
   console.log(3, url);
   return axios.get(url)
     .then((response) => {
