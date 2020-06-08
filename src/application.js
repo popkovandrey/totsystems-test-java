@@ -28,18 +28,17 @@ const app = () => {
   const buttonQuerySec = document.getElementById('button_query_sec');
   const spanQuery = document.getElementById('span_query');
 
-  console.log(1);
   queryRawData('securities')
     .then((objSecurities) => {
       state.data.securities = { ...state.data.securities, ...objSecurities };
     });
-  console.log(2);
+
   queryRawData('history')
     .then((arrHistory) => {
       state.data.history = [...state.data.history, ...arrHistory];
       state.form.sortCol = 'secId';
     });
-  console.log(3);
+
   console.log('Стейт приложения:', state);
 
   selectSortField.addEventListener('change', (evt) => {
