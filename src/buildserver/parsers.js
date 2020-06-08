@@ -27,7 +27,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// const xml2js = require('xml2js');
 var parseSecurities = function parseSecurities(data) {
   var filterSecId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
   var domParser = new DOMParser();
@@ -178,11 +177,5 @@ var parseHistory2 = function parseHistory2(data) {
 
   return histories;
 };
-/* module.exports.parseSecurities = parseSecurities;
-module.exports.parseHistory = parseHistory;
-module.exports.parseSecurities2 = parseSecurities2;
-module.exports.parseHistory2 = parseHistory2;
-*/
-
 
 exports.parseHistory2 = parseHistory2;

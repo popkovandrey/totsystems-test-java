@@ -30,18 +30,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/* const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const parseSecurities2 = require('./parsers');
-const parseHistory2 = require('./parsers');
-const getSecurities = require('./crud');
-const deleteSecurities = require('./crud');
-const postSecurities = require('./crud');
-const putSecurities = require('./crud');
-
-const fsPromises = fs.promises;
-*/
 var readFileSecurities = function readFileSecurities(filePath) {
   return _fs.promises.readFile(filePath, 'utf-8').then(function (text) {
     return (0, _parsers.parseSecurities2)(text);

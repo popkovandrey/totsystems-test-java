@@ -1,20 +1,10 @@
 import {
-  // readFileSecurities,
-  // readFileHistory,
   querySecurities,
   updateTable,
   queryRawData,
 } from './common';
 import setWatches from './watches';
-/* import '../xml/history_1.xml';
-import '../xml/history_2.xml';
-import '../xml/history_3.xml';
-import '../xml/history_4.xml';
-import '../xml/securities_1.xml';
-import '../xml/securities_2.xml'; */
-// import { exportState } from './crud';
-// import models from './models';
-// import data from './server';
+
 
 const app = () => {
   const state = {
@@ -22,12 +12,6 @@ const app = () => {
       securities: {},
       history: [],
     },
-    /*
-    data: {
-      securities: data.securities,
-      history: data.history,
-    },
-    */
     form: {
       sortCol: '',
       sortDirection: 'asc',
@@ -44,48 +28,18 @@ const app = () => {
   const buttonQuerySec = document.getElementById('button_query_sec');
   const spanQuery = document.getElementById('span_query');
 
+  console.log(1);
   queryRawData('securities')
     .then((objSecurities) => {
       state.data.securities = { ...state.data.securities, ...objSecurities };
     });
-
+  console.log(2);
   queryRawData('history')
     .then((arrHistory) => {
       state.data.history = [...state.data.history, ...arrHistory];
       state.form.sortCol = 'secId';
     });
-
-  /* readFileSecurities('/xml/securities_1.xml')
-    .then((objSecurities) => {
-      state.data.securities = { ...state.data.securities, ...objSecurities };
-    });
-
-  readFileSecurities('/xml/securities_2.xml')
-    .then((objSecurities) => {
-      state.data.securities = { ...state.data.securities, ...objSecurities };
-    });
-
-  readFileHistory('/xml/history_1.xml')
-    .then((arrHistory) => {
-      state.data.history = [...state.data.history, ...arrHistory];
-    });
-
-  readFileHistory('/xml/history_2.xml')
-    .then((arrHistory) => {
-      state.data.history = [...state.data.history, ...arrHistory];
-    });
-
-  readFileHistory('/xml/history_3.xml')
-    .then((arrHistory) => {
-      state.data.history = [...state.data.history, ...arrHistory];
-    });
-
-  readFileHistory('/xml/history_4.xml')
-    .then((arrHistory) => {
-      state.data.history = [...state.data.history, ...arrHistory];
-      state.form.sortCol = 'secId';
-    }); */
-
+  console.log(3);
   console.log('Стейт приложения:', state);
 
   selectSortField.addEventListener('change', (evt) => {

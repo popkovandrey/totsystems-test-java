@@ -2,9 +2,6 @@
 import _ from 'lodash';
 import Joi from '@hapi/joi';
 
-// const _ = require('lodash');
-// const Joi = require('@hapi/joi');
-
 const schema = Joi.string().regex(/^[а-яА-Я0-9 ]+$/);
 
 export const getSecurities = (securities, findStr = '') => {
@@ -184,9 +181,3 @@ export const putSecurities = (securities, secId, queryParams) => {
     },
   };
 };
-
-/* module.exports.getSecurities = getSecurities;
-module.exports.deleteSecurities = deleteSecurities;
-module.exports.postSecurities = postSecurities;
-module.exports.putSecurities = putSecurities;
-*/

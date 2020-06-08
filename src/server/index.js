@@ -9,19 +9,6 @@ import {
   putSecurities,
 } from './crud';
 
-/* const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const parseSecurities2 = require('./parsers');
-const parseHistory2 = require('./parsers');
-const getSecurities = require('./crud');
-const deleteSecurities = require('./crud');
-const postSecurities = require('./crud');
-const putSecurities = require('./crud');
-
-const fsPromises = fs.promises;
-*/
-
 const readFileSecurities = (filePath) => fs.readFile(filePath, 'utf-8')
   .then((text) => parseSecurities2(text));
 

@@ -12,8 +12,6 @@ var _joi = _interopRequireDefault(require("@hapi/joi"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /* eslint-disable no-param-reassign */
-// const _ = require('lodash');
-// const Joi = require('@hapi/joi');
 var schema = _joi["default"].string().regex(/^[а-яА-Я0-9 ]+$/);
 
 var getSecurities = function getSecurities(securities) {
@@ -187,11 +185,5 @@ var putSecurities = function putSecurities(securities, secId, queryParams) {
     }
   };
 };
-/* module.exports.getSecurities = getSecurities;
-module.exports.deleteSecurities = deleteSecurities;
-module.exports.postSecurities = postSecurities;
-module.exports.putSecurities = putSecurities;
-*/
-
 
 exports.putSecurities = putSecurities;
