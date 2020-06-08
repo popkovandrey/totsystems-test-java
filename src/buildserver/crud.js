@@ -87,9 +87,11 @@ var postSecurities = function postSecurities(securities, queryParams) {
     };
   }
 
-  if (_lodash["default"].findIndex(securities, function (item) {
-    return item.secId === secId;
-  }) !== -1) {
+  var index = _lodash["default"].findIndex(securities, function (item) {
+    return item.secId.toUpperCase() === secId.toUpperCase();
+  });
+
+  if (index !== -1) {
     return {
       status: 400,
       send: {
@@ -136,7 +138,7 @@ var putSecurities = function putSecurities(securities, secId, queryParams) {
   var emitentTitle = queryParams.emitent_title || '';
 
   var index = _lodash["default"].findIndex(securities, function (item) {
-    return item.secId === secId;
+    return item.secId.toUpperCase() === secId.toUpperCase();
   });
 
   if (index === -1) {

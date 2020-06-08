@@ -90,7 +90,9 @@ export const postSecurities = (securities, queryParams) => {
     };
   }
 
-  if (_.findIndex(securities, (item) => (item.secId === secId)) !== -1) {
+  const index = _.findIndex(securities,(item) => (item.secId.toUpperCase() === secId.toUpperCase()));
+
+  if (index !== -1) {
     return {
       status: 400,
       send: {
@@ -134,7 +136,7 @@ export const putSecurities = (securities, secId, queryParams) => {
   let name = queryParams.name || '';
   let emitentTitle = queryParams.emitent_title || '';
 
-  const index = _.findIndex(securities, (item) => (item.secId === secId));
+  const index = _.findIndex(securities, (item) => (item.secId.toUpperCase() === secId.toUpperCase()));
 
   if (index === -1) {
     return {
