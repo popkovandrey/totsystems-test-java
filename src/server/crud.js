@@ -90,7 +90,10 @@ export const postSecurities = (securities, queryParams) => {
     };
   }
 
-  const index = _.findIndex(securities,(item) => (item.secId.toUpperCase() === secId.toUpperCase()));
+  const index = _.findIndex(
+    securities,
+    (item) => (item.secId.toUpperCase() === secId.toUpperCase()),
+  );
 
   if (index !== -1) {
     return {
@@ -136,7 +139,10 @@ export const putSecurities = (securities, secId, queryParams) => {
   let name = queryParams.name || '';
   let emitentTitle = queryParams.emitent_title || '';
 
-  const index = _.findIndex(securities, (item) => (item.secId.toUpperCase() === secId.toUpperCase()));
+  const index = _.findIndex(
+    securities,
+    (item) => (item.secId.toUpperCase() === secId.toUpperCase()),
+  );
 
   if (index === -1) {
     return {

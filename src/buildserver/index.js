@@ -55,8 +55,7 @@ app.get('/api/securities/:text', function (request, reply) {
   reply.send((0, _crud.getSecurities)(securities, request.params.text));
 });
 app.get('/api/securities', function (request, reply) {
-  reply.status(200);
-  reply.send((0, _crud.getSecurities)(securities));
+  reply.status(200).send((0, _crud.getSecurities)(securities)); // reply.send(getSecurities(securities));
 });
 app["delete"]('/api/securities/:secId', function (request, reply) {
   var del = (0, _crud.deleteSecurities)(securities, request.params.secId);
